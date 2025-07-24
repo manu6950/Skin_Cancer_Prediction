@@ -4,6 +4,15 @@ from tensorflow.keras.models import load_model
 import numpy as np
 import os
 
+import gdown
+
+MODEL_PATH = 'skin_cancer_cnn.h5'
+
+if not os.path.exists(MODEL_PATH):
+    gdown.download('https://drive.google.com/uc?id=1UKOUYNE52nUEDsrDbRgT1Ipds9cbGb1x', MODEL_PATH, quiet=False)
+
+model = load_model(MODEL_PATH)
+
 app = Flask(__name__)
 model = load_model('skin_cancer_cnn.h5')
 
